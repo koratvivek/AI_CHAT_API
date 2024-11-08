@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat with AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .chat-container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .chat-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            text-align: right;
+            background-color: #e1f5fe;
+        }
+
+        .ai-response {
+            text-align: left;
+            background-color: #f1f8e9;
+        }
+
+        .chat-form {
+            margin-top: 20px;
+        }
+
+        .logout-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-container">
+        <h2>Chat with AI</h2>
+
+        <!-- Display all chat history -->
+        <div class="chat-history">
+            {% for chat in chats %}
+            <div class="chat-box user-message">
+                <strong>You:</strong> {{ chat.message }}
+            </div>
+            <div class="chat-box ai-response">
+                <strong>AI:</strong> {{ chat.response }}
+            </div>
+            {% empty %}
+            <p>No messages yet. Start a conversation!</p>
+            {% endfor %}
+        </div>
+
+        <!-- Display token balance -->
+        <p>Your Token Balance: {{ user_tokens }}</p>
+
+        <!-- Chat input form -->
+        <form method="post" class="chat-form">
+            {% csrf_token %}
+            <input type="text" name="message" placeholder="Type your message" required style="width: 80%;">
+            <button type="submit">Send</button>
+        </form>
+
+        <!-- Logout button -->
+        <div class="logout-button">
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
