@@ -14,9 +14,42 @@ This is a Django-based AI chat system that allows users to register, log in, and
 - Django
 - Django REST Framework
 
-## Setup Instructions
+- Sample Input and Output
+Sample 1: User Registration
+Input
+Username: testuser
+Password: testpass
+Output
+Copy code
+Registration successful.
+Sample 2: User Login
+Input
+Username: testuser
+Password: testpass
+Output
+Copy code
+Login successful.
+Sample 3: Chat Interaction
+Input
+Message: Hello AI, how are you?
+Output
+vbnet
+Copy code
+User: Hello AI, how are you?
+AI: This is a dummy AI response to your message.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/ai-chat-system.git
-   cd ai-chat-system
+Remaining Tokens: 3900
+Sample 4: Insufficient Tokens
+Input
+Message: Tell me a joke!
+Output
+vbnet
+Copy code
+Error: Insufficient tokens. You need at least 100 tokens to chat.
+Sample 5: Checking Token Balance
+Input
+Authentication Token: abcdef12345
+Output
+yaml
+Copy code
+Remaining Tokens: 3900
